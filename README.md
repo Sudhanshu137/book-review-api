@@ -64,6 +64,7 @@ This is a simple Book Review REST API built using **Flask** and **MongoDB** as p
 ```bash
 git clone https://github.com/Sudhanshu137/book-review-api.git
 cd book-review-api
+```
 
 2. Create a virtual environment and activate it:
 ```bash
@@ -74,16 +75,16 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 3. Install dependencies:
 ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 4. Set up environment variables in a `.env` file:
 ```bash
-   - `MONGO_URI`: Your MongoDB Atlas connection string
-   - `DB_NAME`: The database name (e.g., `bookreviewdb`)
+- `MONGO_URI`: Your MongoDB Atlas connection string
+- `DB_NAME`: The database name (e.g., `bookreviewdb`)
 ```
 
 5.  Run the Flask server:
 ```bash
-     python app.py
+python app.py
 ```     
