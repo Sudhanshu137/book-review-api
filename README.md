@@ -1,6 +1,20 @@
 # 📚 Book Review API
 
-This is a simple Book Review REST API built using **Flask** and **MongoDB** as part of the Keploy API Fellowship.
+This is a simple Book Review REST API built using **Flask** and **MongoDB** as part of the **Keploy API Fellowship**.
+
+---
+
+## ✅ Keploy API Testing & CI/CD Integration
+
+- This project is integrated with **Keploy** for **AI-powered API testing**.
+- CI/CD is handled via **GitHub Actions**, and Keploy test suites run automatically on every push.
+- All test reports are visible on the [Keploy Dashboard](https://app.keploy.io).
+
+### 🧪 GitHub Actions Status
+
+![CI](https://github.com/Sudhanshu137/book-review-api/actions/workflows/keploy.yml/badge.svg)
+
+
 
 ---
 
@@ -15,10 +29,11 @@ This is a simple Book Review REST API built using **Flask** and **MongoDB** as p
 
 ## 🛠️ Tech Stack
 
-- Backend: Flask (Python)
-- Database: MongoDB Atlas
-- REST API: JSON over HTTP
-- Tools: Postman for testing, Python-dotenv for config
+- **Backend:** Flask (Python)
+- **Database:** MongoDB Atlas
+- **Testing:** Keploy
+- **Dev Tools:** Postman, Python-dotenv
+- **CI/CD:** GitHub Actions + Keploy
 
 ---
 
@@ -45,5 +60,20 @@ This is a simple Book Review REST API built using **Flask** and **MongoDB** as p
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/your-username/book-review-api.git
+git clone https://github.com/Sudhanshu137/book-review-api.git
 cd book-review-api
+
+2 .Create a virtual environment and activate it:
+
+  python -m venv venv
+  source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. Install dependencies:
+   pip install -r requirements.txt
+
+4. Set up environment variables
+    MONGO_URI=mongodb+srv://keployuser:Asaasa137@cluster0.3i5snyx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+    DB_NAME=bookreviewdb
+
+5.  Run the Flask server:
+     python app.py
