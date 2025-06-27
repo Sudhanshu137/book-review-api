@@ -1,4 +1,4 @@
-name: Keploy Test Workflow
+name: Keploy Test Suite
 
 on:
   push:
@@ -6,11 +6,10 @@ on:
       - main
 
 jobs:
-  keploy-tests:
+  run-keploy-tests:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -18,7 +17,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Python Dependencies
+      - name: Install dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
@@ -26,12 +25,10 @@ jobs:
 
       - name: Install Keploy CLI
         run: |
-          curl -sL https://dl.keploy.io/install.sh | bash
-          echo "$HOME/.keploy" >> $GITHUB_PATH
-          echo "$HOME/.keploy" >> $PATH
-          ls $HOME/.keploy  # just to confirm it's installed
-          chmod +x $HOME/.keploy/keploy
+          curl --silent -L https://keploy.io/ent/install.sh | bash
+          export PATH=$PATH:$HOME/.keploy
 
-      - name: Run Keploy Tests
+      - name: Run Keploy Test Suite
         run: |
-          $HOME/.keploy/keploy test -c "python app.py" --delay 10
+          export KEPLOY_API_KEY=${{ secrets.KEPLOY_API_KEY }}
+          keploy test-suite --app=78d3cf54-07e8-4346-a6c4-f100582440f1 --base-path http://127.0.0.1:5000/ --cloud
