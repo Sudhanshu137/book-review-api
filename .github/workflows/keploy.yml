@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
@@ -28,7 +28,10 @@ jobs:
         run: |
           curl -sL https://dl.keploy.io/install.sh | bash
           echo "$HOME/.keploy" >> $GITHUB_PATH
+          echo "$HOME/.keploy" >> $PATH
+          ls $HOME/.keploy  # just to confirm it's installed
+          chmod +x $HOME/.keploy/keploy
 
       - name: Run Keploy Tests
         run: |
-          keploy test -c "python app.py" --delay 10
+          $HOME/.keploy/keploy test -c "python app.py" --delay 10
