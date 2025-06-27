@@ -1,9 +1,34 @@
-- name: Install Keploy
-  run: |
-    curl -sL https://dl.keploy.io/install.sh | bash
-    export PATH=$PATH:$HOME/.keploy
-    keploy version
+name: Keploy Test Workflow
 
-- name: Run Keploy Tests
-  run: |
-    keploy test -c "python app.py" --delay 10git add .github/workflows/keploy.yml
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  keploy-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: Install Keploy CLI
+        run: |
+          curl -sL https://dl.keploy.io/install.sh | bash
+          echo "$HOME/.keploy" >> $GITHUB_PATH
+
+      - name: Run Keploy Tests
+        run: |
+          keploy test -c "python app.py" --delay 10
