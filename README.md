@@ -14,7 +14,9 @@ This is a simple Book Review REST API built using **Flask** and **MongoDB** as p
 
 ![CI](https://github.com/Sudhanshu137/book-review-api/actions/workflows/keploy.yml/badge.svg)
 
+### 📸 Keploy Test Suite Screenshot
 
+![Keploy Test Suite](assets/keploy-test-suite.png)
 
 ---
 
@@ -67,16 +69,21 @@ cd book-review-api
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-
-  
 
 3. Install dependencies:
+```bash
    pip install -r requirements.txt
+```
 
 4. Set up environment variables in a `.env` file:
+```bash
    - `MONGO_URI`: Your MongoDB Atlas connection string
    - `DB_NAME`: The database name (e.g., `bookreviewdb`)
+```
 
 5.  Run the Flask server:
+```bash
      python app.py
+```     
